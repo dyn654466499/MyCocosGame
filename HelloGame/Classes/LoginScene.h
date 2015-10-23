@@ -10,7 +10,9 @@
 
 #include "cocos2d.h"
 #include "WelcomeScene.h"
+#include "SimpleAudioEngine.h"
 
+using namespace CocosDenshion;
 using namespace cocos2d;
 
 class LoginScene : public WelcomeScene

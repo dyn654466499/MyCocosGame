@@ -5,6 +5,8 @@
  *      Author: Administrator
  */
 #include "com_daemon_nativecallback_MSDKNativeCallBack.h"
+#include "LoginScene.h"
+
 USING_NS_CC;
 
 JNIEXPORT void JNICALL Java_com_daemon_nativecallback_MSDKNativeCallBack_changeToWelcomeScene
@@ -12,6 +14,15 @@ JNIEXPORT void JNICALL Java_com_daemon_nativecallback_MSDKNativeCallBack_changeT
 	 Director::getInstance()->getScheduler()->performFunctionInCocosThread([&]()
 	    {
 		    Scene* scene = WelcomeScene::scene();
+		    Director::getInstance()->replaceScene(scene);
+	    });
+}
+
+JNIEXPORT void JNICALL Java_com_daemon_nativecallback_MSDKNativeCallBack_changeToLoginScene
+  (JNIEnv *, jclass){
+	 Director::getInstance()->getScheduler()->performFunctionInCocosThread([&]()
+	    {
+		    Scene* scene = LoginScene::scene();
 		    Director::getInstance()->replaceScene(scene);
 	    });
 }

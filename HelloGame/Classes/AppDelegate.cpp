@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "LoginScene.h"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
+using namespace CocosDenshion;
 
 AppDelegate::AppDelegate() {
 
@@ -30,8 +32,8 @@ static int register_all_packages()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
-    auto director = Director::getInstance();
-    auto glview = director->getOpenGLView();
+	Director* director = Director::getInstance();
+	GLView* glview = director->getOpenGLView();
     if(!glview) {
         glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
@@ -46,11 +48,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = LoginScene::scene();
+    Scene* scene = WelcomeScene::scene();
 
     // run
     director->runWithScene(scene);
 
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sounds/BgmCity.mp3");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("sounds/BgmCity.mp3",true);
     return true;
 }
 

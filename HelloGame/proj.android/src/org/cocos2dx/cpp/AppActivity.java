@@ -117,6 +117,11 @@ public class AppActivity extends Cocos2dxActivity {
 	private static void msdkWXLogin(){
 		WGPlatform.WGLogin(EPlatform.ePlatform_Weixin);
 	}
+	private static void msdkLogout(){
+		if(WGPlatform.WGLogout()){
+			MSDKCallBack.changeToLoginScene();
+		}
+	}
 	
 	// TODO GAME 游戏需要集成此方法并调用WGPlatform.onRestart()
 	@Override

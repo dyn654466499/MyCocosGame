@@ -29,6 +29,7 @@ D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\com_tencent_tmassistant
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\com_tencent_tmassistant_sdk_button_green.9.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\com_tencent_tmassistant_sdk_popup_bg.9.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\icon.png \
+D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\icon_test.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\msdk_thrdcall_action_sheet_base_9.9.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\msdk_thrdcall_action_sheet_button_cancel_click.9.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\msdk_thrdcall_action_sheet_button_cancel_normal.9.png \
@@ -38,6 +39,7 @@ D:\git\CocosGit\HelloGame\proj.android\res\drawable-hdpi\msdk_thrdcall_toolbar_b
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-ldpi\com_tencent_msdk_notice_web_loading.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-ldpi\com_tencent_msdk_push_icon.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-ldpi\icon.png \
+D:\git\CocosGit\HelloGame\proj.android\res\drawable-ldpi\icon_test.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-mdpi\com_tencent_msdk_notice_web_loading.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-mdpi\com_tencent_msdk_push_icon.png \
 D:\git\CocosGit\HelloGame\proj.android\res\drawable-mdpi\icon.png \

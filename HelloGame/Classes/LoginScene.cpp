@@ -49,6 +49,9 @@ bool LoginLayer::init()
 	auto qqLoginMenuItem = MenuItemImage::create("","",[](Object *sender) {
 				//Scene *scene = WelcomeScene::scene();
 				//Director::getInstance()->replaceScene(scene);
+		SimpleAudioEngine::getInstance()->preloadEffect("sounds/ButtonClicked.wav");
+		SimpleAudioEngine::getInstance()->setEffectsVolume(1.5f);
+		SimpleAudioEngine::getInstance()->playEffect("sounds/ButtonClicked.wav",false);
 		   JniMethodInfo info;
 		  //getStaticMethodInfo判断java定义的静态函数是否存在，返回bool
 		  bool ret = JniHelper::getStaticMethodInfo(info,"org/cocos2dx/cpp/AppActivity","msdkQQLogin","()V");
@@ -82,7 +85,7 @@ bool LoginLayer::init()
 	//目前不明白，要qqLoginMenuItem->setNormalSpriteFrame(qqLoginSprite->getDisplayFrame())才能起到点击效果;还要注意的是label要最后add才能显示文字（层级问题）
 	qqLoginMenuItem->setPosition(Point(origin.x + visibleSize.width * 3 / 4 - 10, origin.y + 230));
 
-	Sprite* qqLoginSprite = Sprite::create("login.png",CCRect(0, 0, 235, 65));
+	Sprite* qqLoginSprite = Sprite::create("login.png",Rect(0, 0, 235, 65));
 	qqLoginSprite->setPosition(qqLoginMenuItem->getPosition());
 	this->addChild(qqLoginSprite);
 
@@ -99,7 +102,7 @@ bool LoginLayer::init()
 	//---------------------- WX Login --------------------------------
 	wxLoginMenuItem->setPosition(Point(origin.x + visibleSize.width / 3, origin.y + 230));
 
-	Sprite* wxLoginSprite = Sprite::create("login.png",CCRect(230, 0, 245, 65));
+	Sprite* wxLoginSprite = Sprite::create("login.png",Rect(230, 0, 245, 65));
 	wxLoginSprite->setPosition(wxLoginMenuItem->getPosition());
 	this->addChild(wxLoginSprite);
 

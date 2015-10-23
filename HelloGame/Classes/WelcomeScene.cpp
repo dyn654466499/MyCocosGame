@@ -79,7 +79,7 @@ bool WelcomeLayer::init()
 	this->addChild(btnParticleBatch, 5);
 
 	//����"��ʼ��Ϸ��ť"�ζ�������1
-	auto starSprite1 = Sprite::create("star.png");
+	Sprite* starSprite1 = Sprite::create("star.png");
 	starSprite1->setScale(0.4f);
 	starSprite1->setPosition(Point(startBtnItem->getPosition().x - startBtnItem->getContentSize().width / 2, startBtnItem->getPosition().y - startBtnItem->getContentSize().height / 2));	
 	this->addChild(starSprite1, 10);
@@ -91,12 +91,12 @@ bool WelcomeLayer::init()
 	this->addChild(emitterBatch1, 5);
 
 	float X = 2;
-	auto path1 = buildParticleMovePath(X, startBtnItem->getContentSize().height, startBtnItem->getContentSize().width - 2 * X, true);
+	RepeatForever* path1 = buildParticleMovePath(X, startBtnItem->getContentSize().height, startBtnItem->getContentSize().width - 2 * X, true);
 	starSprite1->runAction(path1);
 	emitter1->runAction(path1->clone());
 
 	//����"��ʼ��Ϸ��ť"�ζ�������2
-	auto starSprite2 = Sprite::create("star.png");
+	Sprite* starSprite2 = Sprite::create("star.png");
 	starSprite2->setScale(0.4f);
 	starSprite2->setPosition(Point(startBtnItem->getPosition().x + startBtnItem->getContentSize().width / 2, startBtnItem->getPosition().y + startBtnItem->getContentSize().height / 2));	
 	this->addChild(starSprite2, 10);
@@ -111,9 +111,39 @@ bool WelcomeLayer::init()
 	starSprite2->runAction(path2);
 	emitter2->runAction(path2->clone());
 
-	#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-		//showAds(true);
-	#endif
+
+	   auto LogoutMenuItem = MenuItemImage::create("","",[](Object *sender) {
+					//Scene *scene = WelcomeScene::scene();
+					//Director::getInstance()->replaceScene(scene);
+			   JniMethodInfo info;
+			  //getStaticMethodInfo判断java定义的静态函数是否存在，返回bool
+			  bool ret = JniHelper::getStaticMethodInfo(info,"org/cocos2dx/cpp/AppActivity","msdkLogout","()V");
+			  if(ret)
+			  {
+			    //传入类ID和方法ID，小心方法名写错，第一个字母是大写
+			    info.env->CallStaticVoidMethod(info.classID,info.methodID);
+			    log("Call void msdkLogout() successfully");
+			  }else{
+				  log("Call void msdkLogout() fail");
+			  }
+			});
+	    LogoutMenuItem->setPosition(Point(origin.x + visibleSize.width-70, origin.y + visibleSize.height - 80));
+
+	    Sprite* LogoutSprite = Sprite::create("login.png",Rect(325, 255, 55,140));
+		LogoutSprite->setRotation(90.f);
+		LogoutSprite->setScale(1.4f);
+		LogoutSprite->setPosition(LogoutMenuItem->getPosition());
+		this->addChild(LogoutSprite);
+
+		LogoutMenuItem->setNormalSpriteFrame(LogoutSprite->getDisplayFrame());
+		Menu* LogoutMenu = Menu::create(LogoutMenuItem, NULL);
+		LogoutMenu->setPosition(Point::ZERO);
+		this->addChild(LogoutMenu);
+
+		LabelTTF *LogoutLabel = LabelTTF::create("注销", "Marker Felt", 35);
+		LogoutLabel->setPosition(Point(LogoutSprite->getPositionX() - 20, LogoutSprite->getPositionY()));
+		this->addChild(LogoutLabel);
+
 
     return true;
 }
